@@ -1,31 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Robot.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowRight, faArrowDown, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-const Robot = () => {
-    const [position, setPosition] = useState({ x: 1, y: 1 });
-
-    const move = (direction) => {
-        const { x, y } = position;
-        switch (direction) {
-            case "North":
-                setPosition({ x, y: Math.min(y + 1, 5) });
-                break;
-            case "East":
-                setPosition({ x: Math.min(x + 1, 5), y });
-                break;
-            case "South":
-                setPosition({ x, y: Math.max(y - 1, 1) });
-                break;
-            case "West":
-                setPosition({ x: Math.max(x - 1, 1), y });
-                break;
-            default:
-                break;
-        }
-    };
-
+export function Robot({ position, moveWithDelay, move }) {
     const renderGrid = () => {
         const grid = [];
         for (let i = 5; i >= 1; i--) {
@@ -36,9 +14,11 @@ const Robot = () => {
                     <div
                         key={`${i}-${j}`}
                         className={`cell ${isRobotHere ? "robot" : ""}`}
-                        onClick={() => setPosition({ x: j, y: i })}
+                        onClick={() => {
+                            moveWithDelay(j, i);
+                        }}
                     >
-                        {isRobotHere && "🤖"} {/* Display a robot emoji */}
+                        {isRobotHere && "🤖"}
                     </div>
                 );
             }
@@ -84,6 +64,4 @@ const Robot = () => {
             </div>
         </div>
     );
-};
-
-export default Robot;
+}
