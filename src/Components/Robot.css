@@ -7,19 +7,47 @@
     border: 1px solid #000;
     cursor: pointer;
     font-size: 20px;
-  }
-  
-  .robot {
+}
+
+.robot {
     background-color: #00f;
     color: #fff;
     border: 1px solid #00f;
-  }
-  
-  .row {
+}
+
+.row {
     display: flex;
-  }
-  
-  .grid {
+}
+
+.grid {
     display: flex;
     flex-direction: column-reverse;
-  }
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 100px; 
+}
+
+.arrow-button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 20px 40px; 
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-bottom:20px;
+}
+
+    .arrow-button:hover {
+        background: #0056b3;
+    }
