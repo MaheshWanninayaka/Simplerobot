@@ -50,9 +50,9 @@ const Robot = () => {
     return (
         <div>
             <h1>Robot Movement</h1>
-            <div>
+            <div className="robot-grid-container">
                 <p>Current Position: ({position.x}, {position.y})</p>
-                <div >{renderGrid()}</div>
+                <div>{renderGrid()}</div>
                 <div className="controls">
                     <div className="button-row">
                         <button onClick={() => move("North")} className="arrow-button">
