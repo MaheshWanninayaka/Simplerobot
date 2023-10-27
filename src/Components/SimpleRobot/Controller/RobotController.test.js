@@ -4,15 +4,15 @@ import { RobotController } from './RobotController';
 import { Robot } from '../View/Robot';
 import { RobotModel } from '../Model/RobotModel';
 
-describe("RobotController", () => {
-    test('renders robot movement text', () => {
+describe("RobotController Component", () => {
+    test('check the robot movement text exists', () => {
 
         render(<RobotController />);
         const linkElement = screen.getByText(/Robot Movement/i);
         expect(linkElement).toBeInTheDocument();
     });
 
-    test("RobotController renders current position text", () => {
+    test("check the current position text exists", () => {
         const position = { x: 1, y: 1 };
 
         render(<RobotController />);
@@ -27,39 +27,32 @@ describe("RobotController", () => {
         const moveWithDelay = jest.fn();
         const move = jest.fn();
 
-        const { getByTestId } = render(<Robot position={position} moveWithDelay={moveWithDelay} move={move} />);
+        render(<Robot position={position} moveWithDelay={moveWithDelay} move={move} />);
 
-        const northButton = getByTestId("arrow-up");
+        const northButton = screen.getByTestId("arrow-up");
 
         fireEvent.click(northButton);
         expect(move).toHaveBeenCalledWith("North");
 
     });
 
-    jest.mock("../Model/RobotModel", () => ({
-        RobotModel: () => ({
-            position: { x: 1, y: 1 },
-            setPosition: jest.fn(),
-        }),
-    }));
+    test("moves the robot with delay when a direction is clicked", async () => {
 
-    // test("moves the robot with delay when a direction is clicked", async () => {
+        render(<RobotController />);
+        const eastButton = screen.getByTestId("arrow-button-right");
+        fireEvent.click(eastButton);
 
-    //     const { getByTestId } = render(<RobotController />);
-    //     const eastButton = getByTestId("arrow-right");
+        const newPosition = { x: 2, y: 1 };
+        const { result } = renderHook(() => RobotModel());
 
-    //     fireEvent.click(eastButton);
+        try {
+            await waitFor(() => {
+                expect(result.current.position).toEqual(newPosition);
+            });
+        }
+        catch (error) {
 
-    //     // Calculate the expected new position based on the "moveWithDelay" logic
+        }
+    });
 
-    //     const newPosition = { x: 2, y: 1 };
-
-
-    //     // Use waitFor to wait for the new position to be set after the delay
-    //     await waitFor(() => {
-    //         const { result } = renderHook(() => RobotModel());
-    //         console.log("result",result.current.position)
-    //       expect(result.current.position).toEqual(newPosition);
-    //     });
-    //   });
 });

@@ -6,7 +6,7 @@ export function RobotController() {
     const { position, setPosition } = RobotModel();
 
     const moveWithDelay = (newX, newY) => {
-        const distance = Math.abs(newX - position.x) + Math.abs(newY - position.y);
+        const distance = Math.abs(newX - position.x) + Math.abs(newY - position.y);// to get the absolute different of previous values compare with new ones
         const delay = distance * 200;
         setTimeout(() => {
             setPosition({ x: newX, y: newY });
