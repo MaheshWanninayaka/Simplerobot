@@ -7,7 +7,7 @@ export function RobotController() {
 
     const moveWithDelay = (newX, newY) => {
         const distance = Math.abs(newX - position.x) + Math.abs(newY - position.y);
-        const delay = distance * 500;
+        const delay = distance * 200;
         setTimeout(() => {
             setPosition({ x: newX, y: newY });
         }, delay);

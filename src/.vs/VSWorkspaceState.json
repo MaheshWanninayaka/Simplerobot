@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Components",
+    "\\Components\\SimpleRobot",
+    "\\Components\\SimpleRobot\\Controller",
+    "\\Components\\SimpleRobot\\Model",
+    "\\Components\\SimpleRobot\\View"
+  ],
+  "SelectedNode": "\\RobotController.test.js",
+  "PreviewInSolutionExplorer": false
+}

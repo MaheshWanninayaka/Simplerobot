@@ -18,7 +18,7 @@ export function Robot({ position, moveWithDelay, move }) {
                             moveWithDelay(j, i);
                         }}
                     >
-                        {isRobotHere && "🤖"}
+                        {isRobotHere && "X"}
                     </div>
                 );
             }
@@ -36,26 +36,26 @@ export function Robot({ position, moveWithDelay, move }) {
                 <div className="controls">
                     <div className="button-row">
                         <button onClick={() => move("North")} className="arrow-button">
-                            <div className="arrow-up">
+                            <div className="arrow-up" data-testid="arrow-up">
                                 <FontAwesomeIcon icon={faArrowUp} />
                             </div>
                         </button>
                     </div>
                     <div className="button-row">
                         <button onClick={() => move("West")} className="arrow-button">
-                            <div className="arrow-left">
+                            <div className="arrow-left" data-testid="arrow-left">
                                 <FontAwesomeIcon icon={faArrowLeft} />
                             </div>
                         </button>
                         <button onClick={() => move("East")} className="arrow-button">
-                            <div className="arrow-right">
+                            <div className="arrow-right" data-testid="arrow-right">
                                 <FontAwesomeIcon icon={faArrowRight} />
                             </div>
                         </button>
                     </div>
                     <div className="button-row">
                         <button onClick={() => move("South")} className="arrow-button">
-                            <div className="arrow-down">
+                            <div className="arrow-down" data-testid="arrow-down">
                                 <FontAwesomeIcon icon={faArrowDown} />
                             </div>
                         </button>
